@@ -1,0 +1,33 @@
+
+<%- include ('partials/_header') %>
+
+  <div class="row">
+      <div class="card1">
+        <div class="card-content">
+          <p class=letrarecom> <br>En esta sección estaré recomendando algunas cosas que me han gustado, puede ser música, comida, lugares, libros, series, películas y todo lo que se me pueda ocurrir.
+          <br> <br>Espero que les guste por lo menos algo de lo que a mi me gusta. </p>
+        </div>
+      </div>
+  </div>
+
+  
+	<div class="row">
+    <% for(var i=0; i < recoms.length; i++) { %>
+      <div class="container">
+            <div class="card">
+              <div class="contenido">
+                <h3><strong><%= recoms[i].title %></strong></h3>
+                  <div class="b"><%= recoms[i].description %></div>
+                  <a href="/readrecom/<%= recoms[i]._id %>" style="color:lightcoral;">Read More</a>
+                  <span class="tiempo">
+                      <%=moment(recoms[i].timestamp, 'ddd MMM DD YYYY HH:mm:ss GMT Z').fromNow(); %>
+                  </span>
+              </div>
+            </div>
+      </div>
+
+      <% } %>
+  </div>
+
+<%- include ('partials/_footer') %>
+
