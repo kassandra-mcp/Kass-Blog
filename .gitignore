@@ -1,0 +1,5 @@
+node_modules
+variables.env
+src/comments.json
+src/recoms.json
+src/tasks.json

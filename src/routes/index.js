@@ -7,6 +7,9 @@ const Task = require('../models/task');
 const Comentario = require('../models/comment');
 const Recomendacion = require('../models/recomendaciones');
 
+
+require('dotenv').config({path: 'variables.env'});
+
 //Importar variables de entorno locales
 router.get('/posts/:page', async (req, res, next) => {
   let perPage = 10;
@@ -53,14 +56,14 @@ router.post('/send-email', (req, res) =>
     post: 587,
     secure: false,
     auth: {
-      user: 'henri62@ethereal.email',
-      pass: 'sK2JnyBA1wxcR16prk'
+      user: process.env.USER,
+      pass: process.env.PASSWORD
     }
   });
 
   var mailOptions = {
     from: "Remitente",
-    to: "kassandra.padua16@gmail.com",
+    to: process.env.USERTO,
     subject: "Enviado desde nodemailer",
     text: "IT WORKS",
     html: output
