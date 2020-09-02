@@ -49,7 +49,7 @@ app.use('/', indexRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 //starting the server
-app.listen(port, host, () => 
+app.listen(process.env.PORT || 3000, host, () => 
 {
 	console.log("Server on port");
 });
