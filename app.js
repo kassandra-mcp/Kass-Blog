@@ -1,15 +1,15 @@
-const path = require('path');
-const express = require('express');
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-const exejs = require('ejs');
-const md5 = require('md5');
+const path = require('path')
+const express = require('express')
+const morgan = require('morgan')
+const mongoose = require('mongoose')
+const exejs = require('ejs')
+const md5 = require('md5')
 const nodemailer = require('nodemailer');
 
 const moment = require("moment");
 
 //Importar variables de entorno locales
-require('dotenv').config({path: 'src/variables.env'});
+require('dotenv').config({path: 'variables.env'});
 
 const app = express();
 
@@ -29,6 +29,7 @@ app.use((req, res, next)=>{
     next();
   });
 
+
 //connecting to db
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URL, 
@@ -38,7 +39,8 @@ mongoose.connect(process.env.DB_URL,
 	})
 
 const host = process.env.HOST || '0.0.0.0';
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
+
 
 //routers
 app.use(express.urlencoded({extended:false}));
@@ -49,7 +51,7 @@ app.use('/', indexRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 //starting the server
-app.listen(port, host, () => 
+app.listen(process.env.PORT || 3000, host, () => 
 {
 	console.log("Server on port");
 });
